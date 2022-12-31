@@ -362,7 +362,7 @@ button {
 
 
 const Coordinates = styled.div`
-background-color: yellowgreen;
+/* background-color: yellowgreen; */
 /* padding: 10px 0; */
 position: relative;
 max-height: 100%;

@@ -7,17 +7,17 @@ import {Link} from "react-router-dom"
 const pdfList = [
     {
         id : 1,
-        pdf_name : "Smaple-document1.pdf",
+        pdf_name : "Sample-document1.pdf",
         pdf_link : "https://arxiv.org/pdf/2212.08011.pdf",
     },
     {
         id : 2,
-        pdf_name : "Smaple-document2.pdf",
+        pdf_name : "Sample-document2.pdf",
         pdf_link : "https://arxiv.org/pdf/2212.07937.pdf",
     },
     {
         id : 3,
-        pdf_name : "Smaple-document3.pdf",
+        pdf_name : "Sample-document3.pdf",
         pdf_link : "https://arxiv.org/pdf/2212.07931.pdf",
     },
 ]

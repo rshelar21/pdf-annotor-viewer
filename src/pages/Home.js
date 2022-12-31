@@ -41,9 +41,7 @@ const Home = () => {
                                 <Link to={`/pdf/${item.pdf_name}`} state={{pdflinks : item.pdf_link}}>
                                 {item.pdf_name}
                                 </Link>
-                                {/* <a href={`/pdf/${item.id}}`} target="_blank">
-                                {item.pdf_name}
-                                </a> */}
+                               
                                 </Navlist>
                             </>
                         )
@@ -63,14 +61,12 @@ height: 100vh;
 `;
 
 const Container = styled.div`
-/* background-color: red; */
 position: relative;
 width: 100%;
 max-width: 400px;
 height: 100%;
-/* color: #fff; */
 padding: 20px;
-background-color: aliceblue;
+/* background-color: aliceblue; */
 `;
 
 

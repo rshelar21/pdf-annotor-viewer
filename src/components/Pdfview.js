@@ -18,27 +18,30 @@ let arr = []
 
 
 const Pdfview = () => {
-    const fetchStorage =  () => {
-        const storage = localStorage.getItem('data');
-        if(storage === null) {
-            setArray([])
-        }
-        else {
-            setArray(JSON.parse(storage))
-        }
-
-
-    }
-    useEffect(() => {
-       
-        fetchStorage();
-        // console.log('useEffect called')
-    })
+    
+    
     const [arrData , setArray] = useState([])
-    // const [btnId, setBtnId] = useState('')
     const viewer = useRef(null);
     const posts = useRef({x : 0, y : 0});
     const btnRef = useRef(null);
+
+    useEffect(() => {
+        const fetchStorage =  () => {
+            element = null;
+            const storage = localStorage.getItem('data');
+            if(storage === null) {
+                setArray([])
+            }
+            else {
+                console.log(JSON.parse(storage) , 'storage')
+                setArray(JSON.parse(storage))
+            }
+    
+    
+        }
+        fetchStorage();
+        // console.log('useEffect called')
+    }, [])
 
    
 
@@ -50,51 +53,49 @@ const Pdfview = () => {
         sidebarTabs: (defaultTabs) => [],
     });
 
-
-    
-
     const location = useLocation();
    
-
-
-    
 
     const drawRect = (e) => {
         console.log(e)
         btnRef.current = e.target.value
-       
+        
         // localStorage.clear();
         if(element !== null) {
-            // element = null;
-            // element === null;
-            // removeAttribute("style");
-            // console.log(document.body.lastChild , 'lastChild')
-            // element.removeAttribute("style");
-            element.remove();
-            element = null;
-            document.body.removeChild(element);
-           
+
+            console.log(element , 'element is')
+
+
+            // const ele = document.querySelectorAll('#rect');
+            // ele.remove();
+            
+            // document.body.removeChild(ele);
+            // document.body.removeChild(document.body.lastChild);
+            // const body = document.querySelectorAll('body');
+            // body.removeChild(ele);
+
+
             // element.remove();
-           
+            // element = null;
+            document.body.removeChild(element);
             console.log(element , 'element')
             console.log('removed')
-            viewer.current.addEventListener('mousedown', getPoint);
-            viewer.current.addEventListener('mouseup', removePoint);
-            // element.current = null;
+
         }
         else {
-            // getPoint(e);
+           
             console.log('drawRect called')
-            // console.log(btnRef.current.id)
+          
+            
             viewer.current.addEventListener('mousedown', getPoint);
             viewer.current.addEventListener('mouseup', removePoint);
 
-            // viewer.current.addEventListener('mousemove', movePoint);
+            
         }
     }
 
     const getPoint = (e) => {
-        // console.log(e);
+        console.log(e);
         // localStorage.clear();
         console.log('getPoint called next elemnt ')
         console.log(element , 'element')
@@ -135,8 +136,9 @@ const Pdfview = () => {
         console.log(width, height)
         // console.log('btn', btnId)
         console.log('btn', btnRef.current)
-        // element = null
+
         element = document.createElement('div');
+        element.setAttribute("id","rect");
         element.style.position = 'absolute';
         element.style.top = posts.current.y + 'px';
         element.style.left = posts.current.x + 'px';
@@ -188,9 +190,12 @@ const Pdfview = () => {
                 name : btnRef.current,
             })
             localStorage.setItem('data', JSON.stringify(arr))
+
+
             
 
         }
+        getFinalData()
         // fetchStorage();
 
         console.log("done")
@@ -198,22 +203,24 @@ const Pdfview = () => {
 
         
     }
-
-    
-
-
-   
-   
-    
- 
+    const getFinalData = () => {
 
 
+        const storage = localStorage.getItem('data');
+            if(storage === null) {
+                setArray([])
+               
+            }
+            else {
+                setArray(JSON.parse(storage))
+                
+            }
+
+
+    }
 
 
 
-   
-
-    
 
 
 
@@ -228,7 +235,7 @@ const Pdfview = () => {
                         <Header>
                             <h2>Labels</h2>
                         </Header>
-{/*  ref={btnRef} */}
+
                         <Buttons>
                             <button id='btn' value="Title" onClick={drawRect}>Title</button>
                             <button id='btn' value="Author" onClick={drawRect}>Author</button>
